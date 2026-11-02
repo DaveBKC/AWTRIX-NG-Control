@@ -957,6 +957,92 @@
           "name": "Explicit confirmation"
         }
       }
+    },
+    "notify_device": {
+      "name": "Send advanced notification to AWTRIX device",
+      "description": "Select the AWTRIX device in the target picker; configure duration, icon, color and sound.",
+      "fields": {
+        "message": {
+          "name": "Message",
+          "description": "Text to display."
+        },
+        "title": {
+          "name": "Title",
+          "description": "Optional title."
+        },
+        "duration": {
+          "name": "Duration (seconds)",
+          "description": "Display duration, 1–600 seconds."
+        },
+        "icon": {
+          "name": "Icon",
+          "description": "Icon name installed on the device."
+        },
+        "color": {
+          "name": "Text color",
+          "description": "Hex color such as #FFFF00."
+        },
+        "sound": {
+          "name": "Sound",
+          "description": "Installed sound or melody name."
+        },
+        "scroll": {
+          "name": "Scroll",
+          "description": "Enable text scrolling."
+        },
+        "wakeup": {
+          "name": "Wake display",
+          "description": "Wake the screen for this notification."
+        },
+        "stack": {
+          "name": "Stack",
+          "description": "Queue notifications."
+        },
+        "data": {
+          "name": "Advanced options",
+          "description": "Extra AWTRIX payload dictionary."
+        }
+      }
+    },
+    "show_app_device": {
+      "name": "Show application on device",
+      "description": "Immediately show an application.",
+      "fields": {
+        "device_id": {
+          "name": "Device ID"
+        },
+        "name": {
+          "name": "Application name"
+        }
+      }
+    },
+    "dismiss_device": {
+      "name": "Dismiss notification on device",
+      "description": "Dismiss the active notification.",
+      "fields": {
+        "device_id": {
+          "name": "Device ID"
+        }
+      }
+    }
+  },
+  "entity": {
+    "notify": {
+      "notifications": {
+        "name": "Notifications"
+      }
+    }
+  },
+  "device_automation": {
+    "trigger_type": {
+      "left_pressed": "Left button pressed",
+      "select_pressed": "Select button pressed",
+      "right_pressed": "Right button pressed"
+    },
+    "action_type": {
+      "send_notification": "Send notification",
+      "show_app": "Show application",
+      "dismiss_notification": "Dismiss notification"
     }
   }
 }

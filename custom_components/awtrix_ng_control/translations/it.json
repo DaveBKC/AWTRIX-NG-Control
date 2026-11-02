@@ -957,6 +957,92 @@
           "name": "Conferma esplicita"
         }
       }
+    },
+    "notify_device": {
+      "name": "Invia notifica avanzata ad AWTRIX",
+      "description": "Seleziona il dispositivo AWTRIX nel destinatario di Home Assistant e imposta durata, icona, colore e suono.",
+      "fields": {
+        "message": {
+          "name": "Messaggio",
+          "description": "Testo da mostrare."
+        },
+        "title": {
+          "name": "Titolo",
+          "description": "Titolo facoltativo."
+        },
+        "duration": {
+          "name": "Durata (secondi)",
+          "description": "Durata della visualizzazione, 1–600 secondi."
+        },
+        "icon": {
+          "name": "Icona",
+          "description": "Nome di un’icona presente sul dispositivo."
+        },
+        "color": {
+          "name": "Colore testo",
+          "description": "Colore esadecimale, ad esempio #FFFF00."
+        },
+        "sound": {
+          "name": "Suono",
+          "description": "Nome del suono o della melodia installata."
+        },
+        "scroll": {
+          "name": "Scorrimento",
+          "description": "Abilita lo scorrimento del testo."
+        },
+        "wakeup": {
+          "name": "Attiva display",
+          "description": "Riattiva lo schermo per la notifica."
+        },
+        "stack": {
+          "name": "Accoda",
+          "description": "Accoda la notifica."
+        },
+        "data": {
+          "name": "Opzioni avanzate",
+          "description": "Dizionario di parametri AWTRIX aggiuntivi."
+        }
+      }
+    },
+    "show_app_device": {
+      "name": "Mostra app sul dispositivo",
+      "description": "Mostra subito un’app.",
+      "fields": {
+        "device_id": {
+          "name": "ID dispositivo"
+        },
+        "name": {
+          "name": "Nome app"
+        }
+      }
+    },
+    "dismiss_device": {
+      "name": "Chiudi notifica sul dispositivo",
+      "description": "Chiude la notifica attiva.",
+      "fields": {
+        "device_id": {
+          "name": "ID dispositivo"
+        }
+      }
+    }
+  },
+  "entity": {
+    "notify": {
+      "notifications": {
+        "name": "Notifiche"
+      }
+    }
+  },
+  "device_automation": {
+    "trigger_type": {
+      "left_pressed": "Pulsante sinistro premuto",
+      "select_pressed": "Pulsante centrale premuto",
+      "right_pressed": "Pulsante destro premuto"
+    },
+    "action_type": {
+      "send_notification": "Invia notifica",
+      "show_app": "Mostra applicazione",
+      "dismiss_notification": "Chiudi notifica"
     }
   }
 }

@@ -10,11 +10,13 @@ from homeassistant.exceptions import HomeAssistantError
 from homeassistant.components import mqtt
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers import entity_registry as er
+from .native_targets import entry_for_device_id
+from .notification_payload import notification_payload, NOTIFICATION_FIELDS
 from .const import DOMAIN, CONF_PREFIX, CONF_NAME
 
 _LOGGER = logging.getLogger(__name__)
 
-PLATFORMS = ["sensor", "binary_sensor", "number", "switch", "button", "text", "select", "image", "light"]
+PLATFORMS = ["sensor", "binary_sensor", "number", "switch", "button", "text", "select", "image", "light", "notify"]
 TARGET = {vol.Required("device"): cv.string}
 JSON_DATA = {vol.Required("data"): dict}
 
@@ -183,6 +185,40 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
     }
     for key, schema in schemas.items():
         hass.services.async_register(DOMAIN, key, handle, schema=schema)
+    # Device-targeted actions are additive; legacy `device: prefix` actions remain unchanged.
+    async def handle_device_target(call: ServiceCall):
+        # Both UI target.device_id and the old data.device_id arrive in
+        # ServiceCall.data. Accept either one and reject missing targets.
+        requested = call.data.get("device_id")
+        if not requested:
+            raise HomeAssistantError("Select an AWTRIX NG Control device as the action target")
+        identifiers = [requested] if isinstance(requested, str) else requested
+        if not isinstance(identifiers, list) or not identifiers or not all(isinstance(v, str) for v in identifiers):
+            raise HomeAssistantError("Invalid Home Assistant device target")
+        for identifier in dict.fromkeys(identifiers):
+            entry = entry_for_device_id(hass, identifier)
+            prefix = entry.data[CONF_PREFIX]
+            if call.service == "notify_device":
+                suffix = "notify"
+                payload = json.dumps(notification_payload(call.data), ensure_ascii=False)
+            elif call.service == "show_app_device":
+                device = hass.data[DOMAIN][entry.entry_id]
+                if device.get("http"):
+                    await device["http"].request("PUT", "/api/v1/apps/active", {"name": call.data["name"], "fast": True})
+                    continue
+                suffix, payload = "apps/switch", call.data["name"]
+            else:
+                suffix, payload = "notify/dismiss", ""
+            await mqtt.async_publish(hass, f"{prefix}/cmd/{suffix}", payload, qos=0, retain=False)
+
+    # Home Assistant's built-in action target injects device_id into call.data.
+    # The legacy data.device_id form remains supported.
+    hass.services.async_register(DOMAIN, "notify_device", handle_device_target,
+        schema=vol.Schema({vol.Optional("device_id"): vol.Any(cv.string, [cv.string]), vol.Required("message"): cv.string, **NOTIFICATION_FIELDS}))
+    hass.services.async_register(DOMAIN, "show_app_device", handle_device_target,
+        schema=vol.Schema({vol.Required("device_id"): cv.string, vol.Required("name"): cv.string}))
+    hass.services.async_register(DOMAIN, "dismiss_device", handle_device_target,
+        schema=vol.Schema({vol.Required("device_id"): cv.string}))
     from .icon_management import register_icon_services
     register_icon_services(hass)
     from .advanced_notifications import register_advanced_notification_services

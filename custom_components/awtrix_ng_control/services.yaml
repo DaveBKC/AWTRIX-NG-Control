@@ -145,7 +145,6 @@ command:
     payload:
       selector:
         text: {}
-
 radio_station:
   name: Riproduce la stazione selezionata
   description: Riproduce la stazione selezionata
@@ -159,7 +158,6 @@ radio_station:
       required: true
       selector:
         text: {}
-
 radio_stop:
   name: Ferma la radio
   description: Ferma la radio
@@ -169,7 +167,6 @@ radio_stop:
       required: true
       selector:
         text: {}
-
 radio_refresh:
   name: Aggiorna le stazioni dal dispositivo
   description: Aggiorna le stazioni dal dispositivo
@@ -179,7 +176,6 @@ radio_refresh:
       required: true
       selector:
         text: {}
-
 radio_add:
   name: Aggiunge o aggiorna una stazione conservando le altre
   description: Aggiunge o aggiorna una stazione conservando le altre
@@ -197,7 +193,6 @@ radio_add:
       required: true
       selector:
         text: {}
-
 radio_remove:
   name: Rimuove una stazione conservando le altre
   description: Rimuove una stazione conservando le altre
@@ -211,7 +206,6 @@ radio_remove:
       required: true
       selector:
         text: {}
-
 play_audio:
   name: Riproduci oggetto audio
   description: Riproduci oggetto audio
@@ -225,7 +219,6 @@ play_audio:
       required: true
       selector:
         object: {}
-
 stop_audio:
   name: Interrompi gruppo audio
   description: Interrompi gruppo audio
@@ -239,7 +232,6 @@ stop_audio:
       required: true
       selector:
         object: {}
-
 http_request:
   name: Invia richiesta HTTP avanzata al dispositivo
   description: Invia richiesta HTTP avanzata al dispositivo
@@ -253,7 +245,12 @@ http_request:
       required: true
       selector:
         select:
-          options: [GET, POST, PUT, PATCH, DELETE]
+          options:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
     path:
       required: true
       selector:
@@ -261,100 +258,122 @@ http_request:
     data:
       selector:
         object: {}
-
 notify_simple:
   name: Notifica rapida
   description: Mostra testo, icona, colore e suono senza scrivere JSON.
   fields:
     device:
       required: true
-      selector: {text: {}}
+      selector:
+        text: {}
     message:
       required: true
-      selector: {text: {}}
+      selector:
+        text: {}
     duration:
       name: Durata (secondi)
       default: 10
       selector:
-        number: {min: 1, max: 600, mode: box}
+        number:
+          min: 1
+          max: 600
+          mode: box
     icon:
-      selector: {text: {}}
+      selector:
+        text: {}
     color:
-      selector: {text: {}}
+      selector:
+        text: {}
     sound:
-      selector: {text: {}}
+      selector:
+        text: {}
 indicator_set:
   name: Imposta indicatore
   description: Imposta uno dei tre LED indicatori con il payload JSON ufficiale.
   fields:
     device:
       required: true
-      selector: {text: {}}
+      selector:
+        text: {}
     indicator:
       required: true
       selector:
-        number: {min: 1, max: 3, mode: box}
+        number:
+          min: 1
+          max: 3
+          mode: box
     data:
       required: true
-      example: {on: true, color: "#00FF00"}
-      selector: {object: {}}
+      example:
+        true: true
+        color: '#00FF00'
+      selector:
+        object: {}
 indicator_clear:
   name: Spegni indicatore
   description: Spegne uno dei tre LED indicatori.
   fields:
     device:
       required: true
-      selector: {text: {}}
+      selector:
+        text: {}
     indicator:
       required: true
       selector:
-        number: {min: 1, max: 3, mode: box}
-
+        number:
+          min: 1
+          max: 3
+          mode: box
 app_refresh:
   name: Aggiorna applicazioni
   description: Rilegge le applicazioni e aggiorna il menu senza riavviare Home Assistant.
   fields:
     device:
       required: true
-      selector: {text: {}}
+      selector:
+        text: {}
 app_set_enabled:
   name: Abilita o disabilita applicazione
   description: Modifica lo stato di una sola app senza alterare le altre.
   fields:
     device:
       required: true
-      selector: {text: {}}
+      selector:
+        text: {}
     name:
       name: Nome applicazione
       required: true
-      selector: {text: {}}
+      selector:
+        text: {}
     enabled:
       name: Abilitata
       required: true
-      selector: {boolean: {}}
+      selector:
+        boolean: {}
 app_set_order:
   name: Ordina applicazioni in rotazione
   description: Richiede tutte le app attualmente nella rotazione una sola volta; mantiene le app disabilitate.
   fields:
     device:
       required: true
-      selector: {text: {}}
+      selector:
+        text: {}
     order:
       name: Elenco ordinato
       description: Lista YAML dei nomi delle app attualmente in rotazione, senza ometterne nessuna.
       required: true
-      selector: {object: {}}
-
+      selector:
+        object: {}
 icon_list:
   name: Elenca icone
-  description: Restituisce l'elenco delle icone installate sul display e lo spazio utilizzato. Usa un'azione con risposta.
+  description: Restituisce l'elenco delle icone installate sul display e lo spazio utilizzato. Usa un'azione con
+    risposta.
   fields:
     device:
       name: Dispositivo
       required: true
       selector:
         text: {}
-
 icon_upload:
   name: Carica icona
   description: Carica una GIF/JPEG presente in /config/www/awtrix_icons sul dispositivo.
@@ -369,7 +388,6 @@ icon_upload:
       required: true
       selector:
         text: {}
-
 icon_rename:
   name: Rinomina icona
   description: Rinomina un'icona esistente senza cambiare l'estensione.
@@ -389,7 +407,6 @@ icon_rename:
       required: true
       selector:
         text: {}
-
 icon_delete:
   name: Elimina icona
   description: Elimina definitivamente un'icona dal display.
@@ -404,7 +421,6 @@ icon_delete:
       required: true
       selector:
         text: {}
-
 notification_advanced:
   name: Notifica avanzata (HTTP)
   description: Invia una notifica completa, anche con layout a regioni e nome, validata dal firmware AWTRIX NG.
@@ -434,7 +450,6 @@ notification_dismiss_named_http:
       required: true
       selector:
         text: {}
-
 script_list:
   name: Elenca script Berry
   description: Legge gli script installati e i relativi errori.
@@ -444,7 +459,6 @@ script_list:
       required: true
       selector:
         text: {}
-
 script_read:
   name: Leggi script Berry
   description: Restituisce il sorgente Berry installato.
@@ -459,7 +473,6 @@ script_read:
       required: true
       selector:
         text: {}
-
 script_install:
   name: Installa script Berry
   description: Installa un nuovo script Berry da /config/awtrix_ng_scripts, senza sovrascrivere nomi esistenti.
@@ -479,7 +492,6 @@ script_install:
       required: true
       selector:
         text: {}
-
 script_update:
   name: Aggiorna script Berry
   description: Aggiorna uno script solo se il sorgente remoto non è cambiato (scriptUpdates).
@@ -499,7 +511,6 @@ script_update:
       required: true
       selector:
         text: {}
-
 script_remove:
   name: Elimina script Berry
   description: ELIMINA lo script e i suoi dati persistenti; i file audio rimangono.
@@ -514,7 +525,6 @@ script_remove:
       required: true
       selector:
         text: {}
-
 script_config_get:
   name: Leggi impostazioni script
   description: Legge i parametri configurabili Berry.
@@ -529,7 +539,6 @@ script_config_get:
       required: true
       selector:
         text: {}
-
 script_config_set:
   name: Imposta parametri script
   description: Modifica alcuni parametri, lasciando invariati gli altri.
@@ -549,7 +558,6 @@ script_config_set:
       required: true
       selector:
         object: {}
-
 audio_status:
   name: Stato audio
   description: Legge radio, alert e audio delle app (sola lettura).
@@ -682,11 +690,9 @@ audio_stop_group:
       selector:
         select:
           options:
-            - alert
-            - app
-            - radio
-
-# Device maintenance and ambient light (v0.6.2)
+          - alert
+          - app
+          - radio
 device_info:
   name: Device information
   description: Read firmware version, memory, uptime and current app.
@@ -733,7 +739,7 @@ moodlight_set:
       selector:
         text: {}
     color:
-      example: "#FF5500"
+      example: '#FF5500'
       selector:
         text: {}
     kelvin:
@@ -757,8 +763,6 @@ moodlight_off:
       example: tc002
       selector:
         text: {}
-
-# Advanced visual effects (v0.6.3)
 visual_capabilities:
   name: Available visual effects
   description: Read effects, transitions, overlays and palettes supported by this device.
@@ -766,7 +770,8 @@ visual_capabilities:
     device:
       required: true
       example: tc002
-      selector: {text: {}}
+      selector:
+        text: {}
 visual_effect_app:
   name: Show animated pushed app
   description: Create or update a pushed app with animated background and optional overlay.
@@ -774,38 +779,56 @@ visual_effect_app:
     device:
       required: true
       example: tc002
-      selector: {text: {}}
+      selector:
+        text: {}
     name:
       required: true
       example: demo_fx
-      selector: {text: {}}
+      selector:
+        text: {}
     text:
       required: true
       example: HELLO
-      selector: {text: {}}
+      selector:
+        text: {}
     effect:
       example: Pacifica
-      selector: {text: {}}
+      selector:
+        text: {}
     effect_speed:
       example: 0.5
-      selector: {number: {min: 0.1, max: 10, step: 0.1, mode: box}}
+      selector:
+        number:
+          min: 0.1
+          max: 10
+          step: 0.1
+          mode: box
     palette:
       example: Ocean
-      selector: {text: {}}
+      selector:
+        text: {}
     overlay:
       example: snow
-      selector: {text: {}}
+      selector:
+        text: {}
     duration_ms:
       example: 7000
-      selector: {number: {min: 100, max: 3600000, step: 100, mode: box}}
+      selector:
+        number:
+          min: 100
+          max: 3600000
+          step: 100
+          mode: box
     show_immediately:
       name: Show immediately
       description: Display the pushed app immediately, without enabling rotation.
-      selector: {boolean: {}}
+      selector:
+        boolean: {}
     enable_rotation:
       name: Enable automatic rotation
       description: Enable global automatic rotation after creating the app (does not disable it when false).
-      selector: {boolean: {}}
+      selector:
+        boolean: {}
 visual_overlay_global:
   name: Set global weather overlay
   description: Show rain, snow or other weather animation over applications. Use none to turn off.
@@ -813,17 +836,25 @@ visual_overlay_global:
     device:
       required: true
       example: tc002
-      selector: {text: {}}
+      selector:
+        text: {}
     overlay:
       required: true
       example: rain
-      selector: {text: {}}
+      selector:
+        text: {}
     speed:
       example: 0.5
-      selector: {number: {min: 0.1, max: 10, step: 0.1, mode: box}}
+      selector:
+        number:
+          min: 0.1
+          max: 10
+          step: 0.1
+          mode: box
     palette:
       example: Ocean
-      selector: {text: {}}
+      selector:
+        text: {}
 visual_transition:
   name: Set app transition animation
   description: Select the animation and duration used between applications.
@@ -831,17 +862,22 @@ visual_transition:
     device:
       required: true
       example: tc002
-      selector: {text: {}}
+      selector:
+        text: {}
     effect:
       required: true
       example: Pixelate
-      selector: {text: {}}
+      selector:
+        text: {}
     duration_ms:
       required: true
       example: 600
-      selector: {number: {min: 0, max: 10000, step: 100, mode: box}}
-
-# Application management (v0.6.4)
+      selector:
+        number:
+          min: 0
+          max: 10000
+          step: 100
+          mode: box
 app_list_http:
   name: List applications
   description: Return all apps with enabled, present and rotation status.
@@ -849,7 +885,8 @@ app_list_http:
     device:
       required: true
       example: tc002
-      selector: {text: {}}
+      selector:
+        text: {}
 app_show_http:
   name: Show application
   description: Display an application immediately without changing global rotation settings.
@@ -857,15 +894,17 @@ app_show_http:
     device:
       required: true
       example: tc002
-      selector: {text: {}}
+      selector:
+        text: {}
     name:
       required: true
       example: demo_fx
-      selector: {text: {}}
+      selector:
+        text: {}
     fast:
       name: Without transition
-      selector: {boolean: {}}
-# Asset file management / Gestione file (v0.6.5)
+      selector:
+        boolean: {}
 file_list:
   name: List files / Elenca file
   description: List asset files and storage usage / Elenca i file e lo spazio utilizzato.
@@ -873,12 +912,17 @@ file_list:
     device:
       required: true
       example: tc002
-      selector: {text: {}}
+      selector:
+        text: {}
     folder:
       required: true
       selector:
         select:
-          options: [ICONS, MELODIES, PALETTES, MP3]
+          options:
+          - ICONS
+          - MELODIES
+          - PALETTES
+          - MP3
 file_upload:
   name: Upload file / Carica file
   description: Upload from /config/awtrix_ng_files/FOLDER/filename.
@@ -886,16 +930,22 @@ file_upload:
     device:
       required: true
       example: tc002
-      selector: {text: {}}
+      selector:
+        text: {}
     folder:
       required: true
       selector:
         select:
-          options: [ICONS, MELODIES, PALETTES, MP3]
+          options:
+          - ICONS
+          - MELODIES
+          - PALETTES
+          - MP3
     filename:
       required: true
       example: ocean.txt
-      selector: {text: {}}
+      selector:
+        text: {}
 file_download:
   name: Download file / Scarica file
   description: Save in /config/awtrix_ng_downloads/FOLDER/filename without overwriting.
@@ -903,16 +953,22 @@ file_download:
     device:
       required: true
       example: tc002
-      selector: {text: {}}
+      selector:
+        text: {}
     folder:
       required: true
       selector:
         select:
-          options: [ICONS, MELODIES, PALETTES, MP3]
+          options:
+          - ICONS
+          - MELODIES
+          - PALETTES
+          - MP3
     filename:
       required: true
       example: ocean.txt
-      selector: {text: {}}
+      selector:
+        text: {}
 file_delete:
   name: Delete file / Elimina file
   description: Permanently delete one asset from AWTRIX / Elimina un file dal dispositivo.
@@ -920,17 +976,22 @@ file_delete:
     device:
       required: true
       example: tc002
-      selector: {text: {}}
+      selector:
+        text: {}
     folder:
       required: true
       selector:
         select:
-          options: [ICONS, MELODIES, PALETTES, MP3]
+          options:
+          - ICONS
+          - MELODIES
+          - PALETTES
+          - MP3
     filename:
       required: true
       example: ocean.txt
-      selector: {text: {}}
-
+      selector:
+        text: {}
 backup_create:
   name: Create device backup
   description: Export supported media and optional non-secret settings and script sources to a verified local ZIP.
@@ -946,15 +1007,19 @@ backup_create:
       selector:
         text: {}
     folders:
-      example: [ICONS, MELODIES, PALETTES, MP3]
+      example:
+      - ICONS
+      - MELODIES
+      - PALETTES
+      - MP3
       selector:
         select:
           multiple: true
           options:
-            - ICONS
-            - MELODIES
-            - PALETTES
-            - MP3
+          - ICONS
+          - MELODIES
+          - PALETTES
+          - MP3
     settings:
       selector:
         boolean: {}
@@ -988,15 +1053,19 @@ backup_restore_files:
       required: true
       selector:
         select:
-          options: [ICONS, MELODIES, PALETTES, MP3]
+          options:
+          - ICONS
+          - MELODIES
+          - PALETTES
+          - MP3
     confirm:
       required: true
       selector:
         boolean: {}
-
 backup_restore_script:
   name: Restore Berry script
-  description: Install a Berry script from an integration backup only if not present, optionally restoring saved options. No overwrites.
+  description: Install a Berry script from an integration backup only if not present, optionally restoring saved
+    options. No overwrites.
   fields:
     device:
       required: true
@@ -1033,17 +1102,17 @@ backup_restore_settings:
       required: true
       selector:
         boolean: {}
-
-# Maintenance / Manutenzione (v0.6.8)
 device_health:
   name: Device health / Diagnostica dispositivo
-  description: Read device state, display and network statistics without changing any setting. / Legge stato e diagnostica senza modifiche.
+  description: Read device state, display and network statistics without changing any setting. / Legge stato e diagnostica
+    senza modifiche.
   fields:
     device:
       name: Device / Dispositivo
       required: true
       example: tc002
-      selector: {text: {}}
+      selector:
+        text: {}
 device_reboot:
   name: Reboot device / Riavvia dispositivo
   description: Restart AWTRIX NG; explicit confirmation is required. / Riavvia AWTRIX NG con conferma obbligatoria.
@@ -1052,8 +1121,77 @@ device_reboot:
       name: Device / Dispositivo
       required: true
       example: tc002
-      selector: {text: {}}
+      selector:
+        text: {}
     confirm:
       name: Confirm / Conferma
       required: true
-      selector: {boolean: {}}
+      selector:
+        boolean: {}
+notify_device:
+  name: Send advanced notification to AWTRIX device
+  description: Select the AWTRIX device using the standard Home Assistant target picker. Set duration, icon, color
+    and sound; legacy data.device_id is still supported.
+  fields:
+    message:
+      required: true
+      selector:
+        text: {}
+    title:
+      selector:
+        text: {}
+    duration:
+      description: Duration in seconds (1-600).
+      selector:
+        number:
+          min: 1
+          max: 600
+          mode: box
+    icon:
+      selector:
+        text: {}
+    color:
+      description: Text color as hex, for example '#FFFF00'.
+      selector:
+        text: {}
+    sound:
+      selector:
+        text: {}
+    scroll:
+      selector:
+        boolean: {}
+    wakeup:
+      selector:
+        boolean: {}
+    stack:
+      selector:
+        boolean: {}
+    data:
+      description: Optional AWTRIX payload object; explicit fields override the same options.
+      selector:
+        object: {}
+  target:
+    device:
+      integration: awtrix_ng_control
+show_app_device:
+  name: Show application on device
+  description: Show an AWTRIX app using a Home Assistant device ID.
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: awtrix_ng_control
+    name:
+      required: true
+      selector:
+        text: {}
+dismiss_device:
+  name: Dismiss notification on device
+  description: Dismiss the current notification using a Home Assistant device ID.
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: awtrix_ng_control
