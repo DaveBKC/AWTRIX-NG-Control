@@ -67,7 +67,7 @@ Developed primarily for the **Ulanzi TC002**, it combines HTTP API and MQTT func
 
 1. Open **HACS** in Home Assistant.
 2. Open the menu and select **Custom repositories**.
-3. Add the following repository:
+3. Add this repository:
 
    `https://github.com/LinusIta/AWTRIX-NG-Control`
 
@@ -91,7 +91,7 @@ into your Home Assistant configuration directory:
 
 Restart Home Assistant and add the integration through **Settings → Devices & Services**.
 
-## Usage Example
+## Usage Examples
 
 List applications installed on the device:
 
