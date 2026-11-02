@@ -6,7 +6,7 @@ AWTRIX NG Control is a custom Home Assistant integration designed to provide cen
 
 Developed primarily for the **Ulanzi TC002**, it combines HTTP API and MQTT functionality to manage applications, notifications, visual effects, Berry scripts, audio, multimedia files, backups and device maintenance.
 
-**Version:** 1.0.1  
+**Version:** 1.1.6  
 **Languages:** English and Italian  
 **Installation:** HACS or manual
 
@@ -150,3 +150,55 @@ This project was developed with the assistance of ChatGPT.
 ## Acknowledgements
 
 Thanks to the AWTRIX NG developers for creating the firmware and providing the APIs that make this integration possible.
+
+
+## Live Screen — AWTRIX 3 and AWTRIX NG (v1.1.6)
+
+Mirror the physical display in a Home Assistant dashboard with approximately one update per second, using MQTT and the Home Assistant WebSocket API. No camera, PNG snapshots, or disk writes are required.
+
+- **TC001 / AWTRIX 3 v0.98:** 32 × 8 LED matrix.
+- **TC002 / AWTRIX NG:** 52 × 16 LED matrix.
+- Pixel-by-pixel LED rendering with a dark gap and a compact device-style bezel.
+- On-demand polling while at least one Live Screen card is open; one polling session is shared across viewers.
+- The Live Screen card requires a Home Assistant administrator account.
+
+### Configure the dashboard resource
+
+In **Dashboard → Edit → Resources**, register the following URL as a **JavaScript module**:
+
+```text
+/awtrix-ng-control/awtrix-live-screen.js
+```
+
+No query-string version suffix is required. When updating the JavaScript, reload the dashboard and, if necessary, clear the browser cache.
+
+### TC002 — AWTRIX NG
+
+```yaml
+type: custom:awtrix-live-screen-card
+prefix: tc002
+firmware: awtrix_ng
+title: TC002 · Live Screen
+```
+
+### TC001 — AWTRIX 3 (including firmware v0.98)
+
+```yaml
+type: custom:awtrix-live-screen-card
+prefix: YOUR_TC001_MQTT_PREFIX
+firmware: awtrix3
+title: TC001 · Live Screen
+```
+
+Replace `YOUR_TC001_MQTT_PREFIX` with the real MQTT topic prefix configured on the TC001.
+
+### MQTT diagnostics
+
+| Firmware | Request topic | Response topic |
+| --- | --- | --- |
+| AWTRIX 3 | `<prefix>/sendscreen` | `<prefix>/screen` |
+| AWTRIX NG | `<prefix>/cmd/screen/get` | `<prefix>/state/screen` |
+
+Both TC001 and TC002 Live Screen views have been tested on physical devices. Some other advanced integration features still require testing; see the full manuals.
+
+See [Live Screen instructions (Italian and English)](LIVE_SCREEN_IT_EN.md).

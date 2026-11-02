@@ -33,6 +33,8 @@ COMMANDS = {
 
 async def async_setup(hass: HomeAssistant, config: dict) -> bool:
     hass.data.setdefault(DOMAIN, {})
+    from .live_screen import async_setup_live_screen
+    await async_setup_live_screen(hass)
     if hass.services.has_service(DOMAIN, "notify"):
         return True
 

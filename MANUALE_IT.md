@@ -887,3 +887,30 @@ Restart AWTRIX NG; explicit confirmation is required. / Riavvia AWTRIX NG con co
 | `device` | Sì | `text` | `'tc002'` |
 | `confirm` | Sì | `boolean` | `—` |
 
+
+
+## Live Screen (v1.1.6) — TC001 e TC002
+
+La scheda Lovelace `custom:awtrix-live-screen-card` visualizza in tempo quasi reale il contenuto del display, con un aggiornamento MQTT al secondo solo mentre la scheda è aperta. Non utilizza entità camera né file PNG. Il TC001 può usare AWTRIX 3 firmware v0.98 e il TC002 AWTRIX NG. Entrambi sono stati collaudati su dispositivi reali.
+
+Per attivarla, riavvia Home Assistant dopo l'installazione e registra in Dashboard → Modifica → Risorse una risorsa **Modulo JavaScript** con URL `/awtrix-ng-control/awtrix-live-screen.js` (senza parametri `?v=`). La prima apertura dopo un aggiornamento può richiedere la pulizia della cache del browser.
+
+**TC002**
+```yaml
+type: custom:awtrix-live-screen-card
+prefix: tc002
+firmware: awtrix_ng
+title: TC002 · Live Screen
+```
+
+**TC001**
+```yaml
+type: custom:awtrix-live-screen-card
+prefix: PREFIX_MQTT_TC001
+firmware: awtrix3
+title: TC001 · Live Screen
+```
+
+Sostituisci `PREFIX_MQTT_TC001` con il prefisso MQTT reale del display. Gli utenti che visualizzano la scheda devono essere amministratori Home Assistant. Il rendering LED v1.1.6 è quello collaudato; la modifica v1.1.7 è stata scartata.
+
+Per la diagnostica MQTT, AWTRIX 3 usa `<prefix>/sendscreen` e `<prefix>/screen`; AWTRIX NG usa `<prefix>/cmd/screen/get` e `<prefix>/state/screen`.
