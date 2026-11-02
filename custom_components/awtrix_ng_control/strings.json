@@ -1,0 +1,962 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "AWTRIX NG Control",
+        "data": {
+          "device_name": "Device name",
+          "mqtt_prefix": "MQTT prefix",
+          "host": "HTTP host (IP or URL)"
+        }
+      }
+    },
+    "error": {
+      "invalid_prefix": "Invalid prefix"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "AWTRIX NG HTTP connection",
+        "data": {
+          "host": "Display HTTP host / IP"
+        }
+      }
+    }
+  },
+  "services": {
+    "notify": {
+      "name": "Send notification",
+      "description": "AWTRIX NG action: send notification.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "dismiss": {
+      "name": "Dismiss notification",
+      "description": "AWTRIX NG action: dismiss notification.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "dismiss_named": {
+      "name": "Dismiss notification by name",
+      "description": "AWTRIX NG action: dismiss notification by name.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        }
+      }
+    },
+    "settings": {
+      "name": "Change display settings",
+      "description": "AWTRIX NG action: change display settings.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "push_app": {
+      "name": "Publish application",
+      "description": "AWTRIX NG action: publish application.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "remove_app": {
+      "name": "Remove application",
+      "description": "AWTRIX NG action: remove application.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        }
+      }
+    },
+    "switch_app": {
+      "name": "Show application",
+      "description": "AWTRIX NG action: show application.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        }
+      }
+    },
+    "sound": {
+      "name": "Play sound",
+      "description": "AWTRIX NG action: play sound.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "rtttl": {
+      "name": "Play RTTTL melody",
+      "description": "AWTRIX NG action: play rtttl melody.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "command": {
+      "name": "Advanced MQTT command",
+      "description": "AWTRIX NG action: advanced mqtt command.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "command": {
+          "name": "Command"
+        },
+        "data": {
+          "name": "Payload"
+        },
+        "payload": {
+          "name": "Payload"
+        }
+      }
+    },
+    "radio_station": {
+      "name": "Play selected radio station",
+      "description": "AWTRIX NG action: play selected radio station.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "station": {
+          "name": "Station"
+        }
+      }
+    },
+    "radio_stop": {
+      "name": "Stop radio",
+      "description": "AWTRIX NG action: stop radio.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "radio_refresh": {
+      "name": "Refresh radio stations",
+      "description": "AWTRIX NG action: refresh radio stations.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "radio_add": {
+      "name": "Add or update radio station",
+      "description": "AWTRIX NG action: add or update radio station.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        },
+        "url": {
+          "name": "URL"
+        }
+      }
+    },
+    "radio_remove": {
+      "name": "Remove radio station",
+      "description": "AWTRIX NG action: remove radio station.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        }
+      }
+    },
+    "play_audio": {
+      "name": "Play audio",
+      "description": "AWTRIX NG action: play audio.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "stop_audio": {
+      "name": "Stop audio group",
+      "description": "AWTRIX NG action: stop audio group.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "http_request": {
+      "name": "Advanced HTTP request",
+      "description": "AWTRIX NG action: advanced http request.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "method": {
+          "name": "HTTP method"
+        },
+        "path": {
+          "name": "API path"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "notify_simple": {
+      "name": "Quick notification",
+      "description": "AWTRIX NG action: quick notification.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "message": {
+          "name": "Message"
+        },
+        "duration": {
+          "name": "Duration"
+        },
+        "icon": {
+          "name": "Icon"
+        },
+        "color": {
+          "name": "Color"
+        },
+        "sound": {
+          "name": "Sound"
+        }
+      }
+    },
+    "indicator_set": {
+      "name": "Set indicator",
+      "description": "AWTRIX NG action: set indicator.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "indicator": {
+          "name": "Indicator"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "indicator_clear": {
+      "name": "Clear indicator",
+      "description": "AWTRIX NG action: clear indicator.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "indicator": {
+          "name": "Indicator"
+        }
+      }
+    },
+    "app_refresh": {
+      "name": "Refresh applications",
+      "description": "AWTRIX NG action: refresh applications.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "app_set_enabled": {
+      "name": "Enable or disable application",
+      "description": "Enable or disable one app without changing the rotation order.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        },
+        "enabled": {
+          "name": "Enabled"
+        }
+      }
+    },
+    "app_set_order": {
+      "name": "Set application rotation order",
+      "description": "AWTRIX NG action: set application rotation order.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "order": {
+          "name": "Application order"
+        }
+      }
+    },
+    "icon_list": {
+      "name": "List icons",
+      "description": "AWTRIX NG action: list icons.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "icon_upload": {
+      "name": "Upload icon",
+      "description": "AWTRIX NG action: upload icon.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "filename": {
+          "name": "File name"
+        }
+      }
+    },
+    "icon_rename": {
+      "name": "Rename icon",
+      "description": "AWTRIX NG action: rename icon.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "old_name": {
+          "name": "Old name"
+        },
+        "new_name": {
+          "name": "New name"
+        }
+      }
+    },
+    "icon_delete": {
+      "name": "Delete icon",
+      "description": "AWTRIX NG action: delete icon.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        }
+      }
+    },
+    "notification_advanced": {
+      "name": "Advanced notification (HTTP)",
+      "description": "AWTRIX NG action: advanced notification (http).",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "notification_dismiss_named_http": {
+      "name": "Dismiss named notification (HTTP)",
+      "description": "AWTRIX NG action: dismiss named notification (http).",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        }
+      }
+    },
+    "script_list": {
+      "name": "List Berry scripts",
+      "description": "AWTRIX NG action: list berry scripts.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "script_read": {
+      "name": "Read Berry script",
+      "description": "AWTRIX NG action: read berry script.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        }
+      }
+    },
+    "script_install": {
+      "name": "Install Berry script",
+      "description": "AWTRIX NG action: install berry script.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        },
+        "filename": {
+          "name": "File name"
+        }
+      }
+    },
+    "script_update": {
+      "name": "Update Berry script",
+      "description": "AWTRIX NG action: update berry script.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        },
+        "filename": {
+          "name": "File name"
+        }
+      }
+    },
+    "script_remove": {
+      "name": "Remove Berry script",
+      "description": "Remove a Berry script and its persistent data. This operation is destructive.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        }
+      }
+    },
+    "script_config_get": {
+      "name": "Read script settings",
+      "description": "AWTRIX NG action: read script settings.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        }
+      }
+    },
+    "script_config_set": {
+      "name": "Update script settings",
+      "description": "AWTRIX NG action: update script settings.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        },
+        "settings": {
+          "name": "Settings"
+        }
+      }
+    },
+    "audio_status": {
+      "name": "Audio status",
+      "description": "AWTRIX NG action: audio status.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "melody_list": {
+      "name": "List melodies",
+      "description": "AWTRIX NG action: list melodies.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "melody_save": {
+      "name": "Save RTTTL melody",
+      "description": "AWTRIX NG action: save rtttl melody.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        },
+        "rtttl": {
+          "name": "Rtttl"
+        }
+      }
+    },
+    "melody_delete": {
+      "name": "Delete melody",
+      "description": "AWTRIX NG action: delete melody.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        }
+      }
+    },
+    "mp3_list": {
+      "name": "List MP3 files",
+      "description": "AWTRIX NG action: list mp3 files.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "mp3_upload": {
+      "name": "Upload MP3",
+      "description": "AWTRIX NG action: upload mp3.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "filename": {
+          "name": "File name"
+        }
+      }
+    },
+    "mp3_delete": {
+      "name": "Delete MP3",
+      "description": "AWTRIX NG action: delete mp3.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        }
+      }
+    },
+    "mp3_rename": {
+      "name": "Rename MP3",
+      "description": "AWTRIX NG action: rename mp3.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "old_name": {
+          "name": "Old name"
+        },
+        "new_name": {
+          "name": "New name"
+        }
+      }
+    },
+    "audio_play_source": {
+      "name": "Play advanced audio source",
+      "description": "AWTRIX NG action: play advanced audio source.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "file": {
+          "name": "File"
+        },
+        "rtttl": {
+          "name": "Rtttl"
+        },
+        "song": {
+          "name": "Song"
+        },
+        "speech": {
+          "name": "Speech"
+        },
+        "station": {
+          "name": "Station"
+        },
+        "loop": {
+          "name": "Loop"
+        }
+      }
+    },
+    "audio_stop_group": {
+      "name": "Stop audio group",
+      "description": "AWTRIX NG action: stop audio group.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "group": {
+          "name": "Audio group"
+        }
+      }
+    },
+    "device_info": {
+      "name": "Device information",
+      "description": "Read firmware version, memory, uptime and current app.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "system_info": {
+      "name": "System settings",
+      "description": "Read system settings from the AWTRIX device.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "device_logs": {
+      "name": "Device logs",
+      "description": "Retrieve logs from the AWTRIX device.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "device_capabilities": {
+      "name": "Device capabilities",
+      "description": "Read available effects, transitions, overlays, sensors and audio.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "moodlight_set": {
+      "name": "Set ambient light",
+      "description": "Set full-screen ambient color, white temperature or brightness.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "color": {
+          "name": "Color"
+        },
+        "kelvin": {
+          "name": "Color temperature (K)"
+        },
+        "brightness": {
+          "name": "Brightness"
+        }
+      }
+    },
+    "moodlight_off": {
+      "name": "Disable ambient light",
+      "description": "Disable ambient light and restore normal application display.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "visual_capabilities": {
+      "name": "Visual effects available",
+      "description": "AWTRIX NG action: visual effects available.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "visual_effect_app": {
+      "name": "Create animated application",
+      "description": "Create or update an animated pushed app; optionally show it immediately or enable rotation.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        },
+        "text": {
+          "name": "Text"
+        },
+        "effect": {
+          "name": "Effect"
+        },
+        "effect_speed": {
+          "name": "Effect speed"
+        },
+        "palette": {
+          "name": "Color palette"
+        },
+        "overlay": {
+          "name": "Overlay"
+        },
+        "duration_ms": {
+          "name": "Duration (ms)"
+        },
+        "show_immediately": {
+          "name": "Show immediately"
+        },
+        "enable_rotation": {
+          "name": "Enable app rotation"
+        }
+      }
+    },
+    "visual_overlay_global": {
+      "name": "Set global weather overlay",
+      "description": "AWTRIX NG action: set global weather overlay.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "overlay": {
+          "name": "Overlay"
+        },
+        "speed": {
+          "name": "Speed"
+        },
+        "palette": {
+          "name": "Color palette"
+        }
+      }
+    },
+    "visual_transition": {
+      "name": "Set application transition",
+      "description": "AWTRIX NG action: set application transition.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "effect": {
+          "name": "Effect"
+        },
+        "duration_ms": {
+          "name": "Duration (ms)"
+        }
+      }
+    },
+    "app_list_http": {
+      "name": "List applications (HTTP)",
+      "description": "List applications and their states",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "app_show_http": {
+      "name": "Show application (HTTP)",
+      "description": "Show an application immediately",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        },
+        "fast": {
+          "name": "Skip transition"
+        }
+      }
+    },
+    "file_list": {
+      "name": "List files",
+      "description": "List asset files",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "folder": {
+          "name": "Folder"
+        }
+      }
+    },
+    "file_upload": {
+      "name": "Upload file",
+      "description": "Upload an asset file",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "folder": {
+          "name": "Folder"
+        },
+        "filename": {
+          "name": "File name"
+        }
+      }
+    },
+    "file_download": {
+      "name": "Download file",
+      "description": "Download an asset file",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "folder": {
+          "name": "Folder"
+        },
+        "filename": {
+          "name": "File name"
+        }
+      }
+    },
+    "file_delete": {
+      "name": "Delete file",
+      "description": "Permanently delete one file from a supported media folder.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "folder": {
+          "name": "Folder"
+        },
+        "filename": {
+          "name": "File name"
+        }
+      }
+    },
+    "backup_create": {
+      "name": "Create backup",
+      "description": "Create an integration-specific backup of the supported data (not a full firmware backup).",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        },
+        "folders": {
+          "name": "Folders"
+        },
+        "settings": {
+          "name": "Settings"
+        },
+        "scripts": {
+          "name": "Include scripts"
+        }
+      }
+    },
+    "backup_inspect": {
+      "name": "Inspect backup",
+      "description": "Inspect and validate an integration backup without changing the device.",
+      "fields": {
+        "name": {
+          "name": "Name"
+        }
+      }
+    },
+    "backup_restore_files": {
+      "name": "Restore media files",
+      "description": "Restore files selectively. Requires confirmation and refuses existing filenames.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        },
+        "folder": {
+          "name": "Folder"
+        },
+        "confirm": {
+          "name": "Explicit confirmation"
+        }
+      }
+    },
+    "backup_restore_script": {
+      "name": "Restore Berry script",
+      "description": "Restore a missing Berry script and optionally its saved options. Requires confirmation.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        },
+        "script": {
+          "name": "Script"
+        },
+        "confirm": {
+          "name": "Explicit confirmation"
+        },
+        "restore_options": {
+          "name": "Restore script options"
+        }
+      }
+    },
+    "backup_restore_settings": {
+      "name": "Restore display settings",
+      "description": "Restore supported display settings, excluding Wi-Fi, MQTT and credentials. Requires confirmation.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "name": {
+          "name": "Name"
+        },
+        "confirm": {
+          "name": "Explicit confirmation"
+        }
+      }
+    },
+    "device_health": {
+      "name": "Device diagnostics",
+      "description": "Read firmware, Wi-Fi signal and uptime without changing settings.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        }
+      }
+    },
+    "device_reboot": {
+      "name": "Restart device",
+      "description": "Restart the display. Explicit confirmation is required.",
+      "fields": {
+        "device": {
+          "name": "Device"
+        },
+        "confirm": {
+          "name": "Explicit confirmation"
+        }
+      }
+    }
+  }
+}

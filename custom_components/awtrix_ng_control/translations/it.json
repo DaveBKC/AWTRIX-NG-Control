@@ -1,0 +1,962 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "AWTRIX NG Control",
+        "data": {
+          "device_name": "Nome dispositivo",
+          "mqtt_prefix": "Prefisso MQTT",
+          "host": "Indirizzo HTTP (IP o URL)"
+        }
+      }
+    },
+    "error": {
+      "invalid_prefix": "Prefisso non valido"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Connessione HTTP AWTRIX NG",
+        "data": {
+          "host": "Indirizzo HTTP / IP del display"
+        }
+      }
+    }
+  },
+  "services": {
+    "notify": {
+      "name": "Mostra notifica",
+      "description": "Invia un payload JSON AWTRIX NG sul display.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "dismiss": {
+      "name": "Chiudi notifica",
+      "description": "Chiude la notifica attiva.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "dismiss_named": {
+      "name": "Chiudi notifica per nome",
+      "description": "Rimuove la notifica indicata.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        }
+      }
+    },
+    "settings": {
+      "name": "Impostazioni",
+      "description": "Applica le impostazioni del display.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "push_app": {
+      "name": "Pubblica app",
+      "description": "Crea o aggiorna una app pushed.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "remove_app": {
+      "name": "Rimuovi app",
+      "description": "Elimina una app pushed.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        }
+      }
+    },
+    "switch_app": {
+      "name": "Cambia app",
+      "description": "Mostra una app.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        }
+      }
+    },
+    "sound": {
+      "name": "Suono",
+      "description": "Invia il payload per il comando sound.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "rtttl": {
+      "name": "Melodia RTTTL",
+      "description": "Invia il payload RTTTL.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "command": {
+      "name": "Comando MQTT avanzato",
+      "description": "Invia qualsiasi percorso di comando MQTT AWTRIX NG.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "command": {
+          "name": "Comando"
+        },
+        "data": {
+          "name": "Payload"
+        },
+        "payload": {
+          "name": "Payload"
+        }
+      }
+    },
+    "radio_station": {
+      "name": "Riproduce la stazione selezionata",
+      "description": "Riproduce la stazione selezionata",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "station": {
+          "name": "Stazione"
+        }
+      }
+    },
+    "radio_stop": {
+      "name": "Ferma la radio",
+      "description": "Ferma la radio",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "radio_refresh": {
+      "name": "Aggiorna le stazioni dal dispositivo",
+      "description": "Aggiorna le stazioni dal dispositivo",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "radio_add": {
+      "name": "Aggiunge o aggiorna una stazione conservando le altre",
+      "description": "Aggiunge o aggiorna una stazione conservando le altre",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        },
+        "url": {
+          "name": "URL"
+        }
+      }
+    },
+    "radio_remove": {
+      "name": "Rimuove una stazione conservando le altre",
+      "description": "Rimuove una stazione conservando le altre",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        }
+      }
+    },
+    "play_audio": {
+      "name": "Riproduci oggetto audio",
+      "description": "Riproduci oggetto audio",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "stop_audio": {
+      "name": "Interrompi gruppo audio",
+      "description": "Interrompi gruppo audio",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "http_request": {
+      "name": "Invia richiesta HTTP avanzata al dispositivo",
+      "description": "Invia richiesta HTTP avanzata al dispositivo",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "method": {
+          "name": "Metodo HTTP"
+        },
+        "path": {
+          "name": "Percorso API"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "notify_simple": {
+      "name": "Notifica rapida",
+      "description": "Mostra testo, icona, colore e suono senza scrivere JSON.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "message": {
+          "name": "Message"
+        },
+        "duration": {
+          "name": "Duration"
+        },
+        "icon": {
+          "name": "Icona"
+        },
+        "color": {
+          "name": "Colore"
+        },
+        "sound": {
+          "name": "Sound"
+        }
+      }
+    },
+    "indicator_set": {
+      "name": "Imposta indicatore",
+      "description": "Imposta uno dei tre LED indicatori con il payload JSON ufficiale.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "indicator": {
+          "name": "Indicator"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "indicator_clear": {
+      "name": "Spegni indicatore",
+      "description": "Spegne uno dei tre LED indicatori.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "indicator": {
+          "name": "Indicator"
+        }
+      }
+    },
+    "app_refresh": {
+      "name": "Aggiorna applicazioni",
+      "description": "Rilegge le applicazioni e aggiorna il menu senza riavviare Home Assistant.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "app_set_enabled": {
+      "name": "Abilita o disabilita applicazione",
+      "description": "Modifica lo stato di una sola app senza alterare le altre.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        },
+        "enabled": {
+          "name": "Abilitata"
+        }
+      }
+    },
+    "app_set_order": {
+      "name": "Ordina applicazioni in rotazione",
+      "description": "Richiede tutte le app attualmente nella rotazione una sola volta; mantiene le app disabilitate.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "order": {
+          "name": "Ordine applicazioni"
+        }
+      }
+    },
+    "icon_list": {
+      "name": "Elenca icone",
+      "description": "Restituisce l'elenco delle icone installate sul display e lo spazio utilizzato. Usa un'azione con risposta.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "icon_upload": {
+      "name": "Carica icona",
+      "description": "Carica una GIF/JPEG presente in /config/www/awtrix_icons sul dispositivo.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "filename": {
+          "name": "Nome file"
+        }
+      }
+    },
+    "icon_rename": {
+      "name": "Rinomina icona",
+      "description": "Rinomina un'icona esistente senza cambiare l'estensione.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "old_name": {
+          "name": "Old name"
+        },
+        "new_name": {
+          "name": "New name"
+        }
+      }
+    },
+    "icon_delete": {
+      "name": "Elimina icona",
+      "description": "Elimina definitivamente un'icona dal display.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        }
+      }
+    },
+    "notification_advanced": {
+      "name": "Notifica avanzata (HTTP)",
+      "description": "Invia una notifica completa, anche con layout a regioni e nome, validata dal firmware AWTRIX NG.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "data": {
+          "name": "Payload"
+        }
+      }
+    },
+    "notification_dismiss_named_http": {
+      "name": "Cancella notifica per nome (HTTP)",
+      "description": "Rimuove una notifica identificata per nome, anche dalla coda.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        }
+      }
+    },
+    "script_list": {
+      "name": "Elenca script Berry",
+      "description": "Legge gli script installati e i relativi errori.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "script_read": {
+      "name": "Leggi script Berry",
+      "description": "Restituisce il sorgente Berry installato.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        }
+      }
+    },
+    "script_install": {
+      "name": "Installa script Berry",
+      "description": "Installa un nuovo script Berry da /config/awtrix_ng_scripts, senza sovrascrivere nomi esistenti.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        },
+        "filename": {
+          "name": "Nome file"
+        }
+      }
+    },
+    "script_update": {
+      "name": "Aggiorna script Berry",
+      "description": "Aggiorna uno script solo se il sorgente remoto non è cambiato (scriptUpdates).",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        },
+        "filename": {
+          "name": "Nome file"
+        }
+      }
+    },
+    "script_remove": {
+      "name": "Elimina script Berry",
+      "description": "ELIMINA lo script e i suoi dati persistenti; i file audio rimangono.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        }
+      }
+    },
+    "script_config_get": {
+      "name": "Leggi impostazioni script",
+      "description": "Legge i parametri configurabili Berry.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        }
+      }
+    },
+    "script_config_set": {
+      "name": "Imposta parametri script",
+      "description": "Modifica alcuni parametri, lasciando invariati gli altri.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        },
+        "settings": {
+          "name": "Impostazioni"
+        }
+      }
+    },
+    "audio_status": {
+      "name": "Stato audio",
+      "description": "Legge radio, alert e audio delle app (sola lettura).",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "melody_list": {
+      "name": "Elenco melodie",
+      "description": "Restituisce melodie RTTTL e relative informazioni (sola lettura).",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "melody_save": {
+      "name": "Salva melodia RTTTL",
+      "description": "Crea o sostituisce una melodia presente sul dispositivo.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        },
+        "rtttl": {
+          "name": "Rtttl"
+        }
+      }
+    },
+    "melody_delete": {
+      "name": "Elimina melodia",
+      "description": "Elimina definitivamente la melodia specificata.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        }
+      }
+    },
+    "mp3_list": {
+      "name": "Elenco MP3",
+      "description": "Legge file audio e suoni degli script (sola lettura).",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "mp3_upload": {
+      "name": "Carica MP3",
+      "description": "Carica un MP3 precedentemente salvato in /config/awtrix_ng_audio/.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "filename": {
+          "name": "Nome file"
+        }
+      }
+    },
+    "mp3_delete": {
+      "name": "Elimina MP3",
+      "description": "Elimina definitivamente un MP3 dalla cartella /MP3 del dispositivo.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        }
+      }
+    },
+    "mp3_rename": {
+      "name": "Rinomina MP3",
+      "description": "Rinomina un MP3 senza cambiare i suoni propri degli script.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "old_name": {
+          "name": "Old name"
+        },
+        "new_name": {
+          "name": "New name"
+        }
+      }
+    },
+    "audio_play_source": {
+      "name": "Riproduci audio avanzato",
+      "description": "Riproduce una sola sorgente fra file, RTTTL, song, speech e stazione.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "file": {
+          "name": "File"
+        },
+        "rtttl": {
+          "name": "Rtttl"
+        },
+        "song": {
+          "name": "Song"
+        },
+        "speech": {
+          "name": "Speech"
+        },
+        "station": {
+          "name": "Stazione"
+        },
+        "loop": {
+          "name": "Loop"
+        }
+      }
+    },
+    "audio_stop_group": {
+      "name": "Ferma gruppo audio",
+      "description": "Ferma solo alert, suoni delle app o radio.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "group": {
+          "name": "Gruppo audio"
+        }
+      }
+    },
+    "device_info": {
+      "name": "Informazioni dispositivo",
+      "description": "Read firmware version, memory, uptime and current app.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "system_info": {
+      "name": "Configurazione sistema",
+      "description": "Read system settings from the AWTRIX device.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "device_logs": {
+      "name": "Registri dispositivo",
+      "description": "Retrieve logs from the AWTRIX device.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "device_capabilities": {
+      "name": "Funzionalità dispositivo",
+      "description": "Read available effects, transitions, overlays, sensors and audio.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "moodlight_set": {
+      "name": "Imposta luce ambiente",
+      "description": "Set full-screen ambient color, white temperature or brightness.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "color": {
+          "name": "Colore"
+        },
+        "kelvin": {
+          "name": "Temperatura colore (K)"
+        },
+        "brightness": {
+          "name": "Luminosità"
+        }
+      }
+    },
+    "moodlight_off": {
+      "name": "Disattiva luce ambiente",
+      "description": "Disable ambient light and restore normal application display.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "visual_capabilities": {
+      "name": "Effetti grafici disponibili",
+      "description": "Read effects, transitions, overlays and palettes supported by this device.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "visual_effect_app": {
+      "name": "Crea applicazione animata",
+      "description": "Create or update a pushed app with animated background and optional overlay.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        },
+        "text": {
+          "name": "Testo"
+        },
+        "effect": {
+          "name": "Effetto"
+        },
+        "effect_speed": {
+          "name": "Velocità effetto"
+        },
+        "palette": {
+          "name": "Palette colori"
+        },
+        "overlay": {
+          "name": "Overlay"
+        },
+        "duration_ms": {
+          "name": "Durata (ms)"
+        },
+        "show_immediately": {
+          "name": "Mostra subito"
+        },
+        "enable_rotation": {
+          "name": "Abilita rotazione app"
+        }
+      }
+    },
+    "visual_overlay_global": {
+      "name": "Imposta effetto meteo globale",
+      "description": "Show rain, snow or other weather animation over applications. Use none to turn off.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "overlay": {
+          "name": "Overlay"
+        },
+        "speed": {
+          "name": "Velocità"
+        },
+        "palette": {
+          "name": "Palette colori"
+        }
+      }
+    },
+    "visual_transition": {
+      "name": "Imposta transizione tra applicazioni",
+      "description": "Select the animation and duration used between applications.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "effect": {
+          "name": "Effetto"
+        },
+        "duration_ms": {
+          "name": "Durata (ms)"
+        }
+      }
+    },
+    "app_list_http": {
+      "name": "Elenca applicazioni (HTTP)",
+      "description": "Return all apps with enabled, present and rotation status.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "app_show_http": {
+      "name": "Mostra applicazione (HTTP)",
+      "description": "Display an application immediately without changing global rotation settings.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        },
+        "fast": {
+          "name": "Salta transizione"
+        }
+      }
+    },
+    "file_list": {
+      "name": "Elenca file",
+      "description": "List asset files and storage usage / Elenca i file e lo spazio utilizzato.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "folder": {
+          "name": "Cartella"
+        }
+      }
+    },
+    "file_upload": {
+      "name": "Carica file",
+      "description": "Upload from /config/awtrix_ng_files/FOLDER/filename.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "folder": {
+          "name": "Cartella"
+        },
+        "filename": {
+          "name": "Nome file"
+        }
+      }
+    },
+    "file_download": {
+      "name": "Scarica file",
+      "description": "Save in /config/awtrix_ng_downloads/FOLDER/filename without overwriting.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "folder": {
+          "name": "Cartella"
+        },
+        "filename": {
+          "name": "Nome file"
+        }
+      }
+    },
+    "file_delete": {
+      "name": "Elimina file",
+      "description": "Permanently delete one asset from AWTRIX / Elimina un file dal dispositivo.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "folder": {
+          "name": "Cartella"
+        },
+        "filename": {
+          "name": "Nome file"
+        }
+      }
+    },
+    "backup_create": {
+      "name": "Crea backup",
+      "description": "Export supported media and optional non-secret settings and script sources to a verified local ZIP.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        },
+        "folders": {
+          "name": "Folders"
+        },
+        "settings": {
+          "name": "Impostazioni"
+        },
+        "scripts": {
+          "name": "Includi script"
+        }
+      }
+    },
+    "backup_inspect": {
+      "name": "Verifica backup",
+      "description": "Validate ZIP checksums without changing the device.",
+      "fields": {
+        "name": {
+          "name": "Nome"
+        }
+      }
+    },
+    "backup_restore_files": {
+      "name": "Ripristina file multimediali",
+      "description": "Restore only absent media files in one selected folder; never overwrite existing files.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        },
+        "folder": {
+          "name": "Cartella"
+        },
+        "confirm": {
+          "name": "Conferma esplicita"
+        }
+      }
+    },
+    "backup_restore_script": {
+      "name": "Ripristina script Berry",
+      "description": "Install a Berry script from an integration backup only if not present, optionally restoring saved options. No overwrites.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        },
+        "script": {
+          "name": "Script"
+        },
+        "confirm": {
+          "name": "Conferma esplicita"
+        },
+        "restore_options": {
+          "name": "Ripristina opzioni dello script"
+        }
+      }
+    },
+    "backup_restore_settings": {
+      "name": "Ripristina impostazioni display",
+      "description": "Restore approved display settings only. Excludes network, passwords, MQTT and system settings.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "name": {
+          "name": "Nome"
+        },
+        "confirm": {
+          "name": "Conferma esplicita"
+        }
+      }
+    },
+    "device_health": {
+      "name": "Diagnostica dispositivo",
+      "description": "Read device state, display and network statistics without changing any setting. / Legge stato e diagnostica senza modifiche.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        }
+      }
+    },
+    "device_reboot": {
+      "name": "Riavvia dispositivo",
+      "description": "Restart AWTRIX NG; explicit confirmation is required. / Riavvia AWTRIX NG con conferma obbligatoria.",
+      "fields": {
+        "device": {
+          "name": "Dispositivo"
+        },
+        "confirm": {
+          "name": "Conferma esplicita"
+        }
+      }
+    }
+  }
+}

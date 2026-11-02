@@ -1,0 +1,52 @@
+# Schede da aggiungere ad una dashboard: vista TC002
+# Controllare gli entity_id effettivi in Strumenti per sviluppatori > Stati.
+# La pagina Dispositivo nativa non supporta cinque sezioni personalizzate.
+title: AWTRIX NG TC002
+views:
+  - title: TC002
+    path: awtrix-tc002
+    icon: mdi:monitor-dashboard
+    cards:
+      - type: entities
+        title: Display
+        entities:
+          - switch.ulanzi_tc002_schermo_acceso
+          - number.ulanzi_tc002_luminosita
+          - switch.ulanzi_tc002_luminosita_automatica
+          - select.ulanzi_tc002_quadrante_orologio
+          - select.ulanzi_tc002_transizione_app
+      - type: entities
+        title: Applicazioni
+        entities:
+          - select.ulanzi_tc002_applicazione
+          - switch.ulanzi_tc002_rotazione_automatica_app
+          - number.ulanzi_tc002_durata_rotazione_s
+          - button.ulanzi_tc002_app_successiva
+          - button.ulanzi_tc002_app_precedente
+      - type: entities
+        title: Notifiche
+        entities:
+          - text.ulanzi_tc002_invia_notifica
+          - text.ulanzi_tc002_icona_notifica
+          - text.ulanzi_tc002_colore_notifica
+          - number.ulanzi_tc002_durata_notifica_s
+          - text.ulanzi_tc002_suono_notifica
+          - select.ulanzi_tc002_scorrimento_notifica
+          - button.ulanzi_tc002_invia_notifica_ora
+          - button.ulanzi_tc002_chiudi_notifica
+      - type: entities
+        title: Audio e radio
+        entities:
+          - select.ulanzi_tc002_stazione_radio
+          - button.ulanzi_tc002_ferma_radio
+          - number.ulanzi_tc002_volume_generale
+          - number.ulanzi_tc002_volume_radio
+          - number.ulanzi_tc002_volume_avvisi
+          - number.ulanzi_tc002_volume_app
+      - type: entities
+        title: Sistema e indicatori
+        entities:
+          - light.ulanzi_tc002_indicatore_1
+          - light.ulanzi_tc002_indicatore_2
+          - light.ulanzi_tc002_indicatore_3
+          - sensor.ulanzi_tc002_diagnostica_http
