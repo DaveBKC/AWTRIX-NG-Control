@@ -2,8 +2,9 @@
   "domain": "awtrix_ng_control",
   "name": "AWTRIX NG Control",
   "version": "1.0.0",
-  "documentation": "https://blueforcer.github.io/awtrix-ng/esp32/",
-  "issue_tracker": "https://github.com/blueforcer/awtrix-ng/issues",
+  "documentation": "https://github.com/LinusIta/AWTRIX-NG-Control",
+  "issue_tracker": "https://github.com/LinusIta/AWTRIX-NG-Control/issues",
+  "codeowners": ["@LinusIta"],
   "config_flow": true,
   "dependencies": [
     "mqtt"
