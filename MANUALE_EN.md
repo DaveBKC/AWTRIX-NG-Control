@@ -912,3 +912,19 @@ title: TC001 · Live Screen
 ```
 
 Use the actual TC001 MQTT prefix. Viewing requires a Home Assistant administrator account. Version 1.1.6 uses the tested LED renderer; the 1.1.7 renderer change was rejected. AWTRIX 3 uses `<prefix>/sendscreen` and `<prefix>/screen`; AWTRIX NG uses `<prefix>/cmd/screen/get` and `<prefix>/state/screen`.
+
+## Text-to-Speech TTS (v1.2.0)
+
+`awtrix_ng_control.say` generates MP3 speech using an existing Home Assistant TTS entity and sends it directly to an **AWTRIX NG** display through the HTTP audio API. Tested on TC002 using `tts.edge_tts`; Google AI TTS has not yet been verified on hardware. AWTRIX 3 Live Screen remains unchanged; TTS requires an AWTRIX NG device with the HTTP API.
+
+Use either a Home Assistant device selector (`device_id`) or the MQTT prefix (`device`), not both. The display's HTTP host must be configured and reachable.
+
+```yaml
+action: awtrix_ng_control.say
+data:
+  device: tc002
+  engine: tts.edge_tts
+  message: "Home Assistant voice notification test."
+```
+
+Optional fields: `language`, `cache`, `options`. Maximum MP3 clip size: 2 MiB. Available TTS engines depend on your Home Assistant installation.

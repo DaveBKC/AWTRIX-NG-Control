@@ -241,6 +241,8 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
     register_backup_services(hass)
     from .maintenance import register_maintenance_services
     register_maintenance_services(hass)
+    from .tts_control import register_tts_services
+    register_tts_services(hass)
     return True
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:

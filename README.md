@@ -6,7 +6,7 @@ AWTRIX NG Control is a custom Home Assistant integration designed to provide cen
 
 Developed primarily for the **Ulanzi TC002**, it combines HTTP API and MQTT functionality to manage applications, notifications, visual effects, Berry scripts, audio, multimedia files, backups and device maintenance.
 
-**Version:** 1.1.6  
+**Version:** 1.2.0  
 **Languages:** English and Italian  
 **Installation:** HACS or manual
 
@@ -41,6 +41,7 @@ Developed primarily for the **Ulanzi TC002**, it combines HTTP API and MQTT func
 - Export and restore supported script settings
 
 ### Audio and Internet Radio
+- Home Assistant TTS to AWTRIX NG MP3 playback (v1.2.0)
 - Radio station selection and playback controls
 - Audio status and diagnostics
 - MP3 management
@@ -202,3 +203,19 @@ Replace `YOUR_TC001_MQTT_PREFIX` with the real MQTT topic prefix configured on t
 Both TC001 and TC002 Live Screen views have been tested on physical devices. Some other advanced integration features still require testing; see the full manuals.
 
 See [Live Screen instructions (Italian and English)](LIVE_SCREEN_IT_EN.md).
+
+## Text-to-Speech (v1.2.0)
+
+The `awtrix_ng_control.say` action synthesizes speech using an existing Home Assistant TTS entity and sends an MP3 clip directly to an **AWTRIX NG** device via its HTTP API. It has been tested on TC002 with `tts.edge_tts`. The Google AI TTS provider has not yet been confirmed on-device. The AWTRIX 3 Live Screen feature is unchanged; this TTS service is intended for AWTRIX NG HTTP devices.
+
+Select an AWTRIX NG device with the graphical Home Assistant device selector (`device_id`), **or** provide its MQTT prefix (`device`, e.g. `tc002`), but not both. The selected device must have an accessible HTTP address.
+
+```yaml
+action: awtrix_ng_control.say
+data:
+  device: tc002
+  engine: tts.edge_tts
+  message: "This is a voice notification from Home Assistant."
+```
+
+Optional fields: `language`, `cache`, and provider-specific `options`. Generated clips must not exceed 2 MiB. TTS entities depend on the user's Home Assistant configuration.

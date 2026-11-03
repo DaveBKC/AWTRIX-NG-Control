@@ -914,3 +914,19 @@ title: TC001 · Live Screen
 Sostituisci `PREFIX_MQTT_TC001` con il prefisso MQTT reale del display. Gli utenti che visualizzano la scheda devono essere amministratori Home Assistant. Il rendering LED v1.1.6 è quello collaudato; la modifica v1.1.7 è stata scartata.
 
 Per la diagnostica MQTT, AWTRIX 3 usa `<prefix>/sendscreen` e `<prefix>/screen`; AWTRIX NG usa `<prefix>/cmd/screen/get` e `<prefix>/state/screen`.
+
+## Sintesi vocale TTS (v1.2.0)
+
+L'azione `awtrix_ng_control.say` genera un MP3 tramite un'entità TTS già configurata in Home Assistant e lo invia direttamente al dispositivo **AWTRIX NG** tramite HTTP. Verificata sul TC002 con `tts.edge_tts`; il motore Google AI TTS non è ancora stato verificato sul dispositivo. Live Screen per AWTRIX 3 rimane invariato: il TTS qui descritto è destinato ai dispositivi AWTRIX NG con API HTTP.
+
+Nell'editor puoi scegliere il dispositivo Home Assistant (`device_id`) **oppure** il prefisso MQTT (`device`, per esempio `tc002`), non entrambi. Serve l'indirizzo HTTP del display configurato e raggiungibile.
+
+```yaml
+action: awtrix_ng_control.say
+data:
+  device: tc002
+  engine: tts.edge_tts
+  message: "La batteria Bluetti è completamente carica."
+```
+
+Opzioni aggiuntive: `language`, `cache`, `options`. Limite MP3: 2 MiB. I nomi dei motori TTS dipendono dalle entità presenti in Home Assistant.

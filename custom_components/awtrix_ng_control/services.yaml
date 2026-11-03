@@ -1195,3 +1195,47 @@ dismiss_device:
       selector:
         device:
           integration: awtrix_ng_control
+
+# Replace only the existing `say:` section in services.yaml with this block.
+# No top-level `target:`: it would force Home Assistant to require a target.
+say:
+  name: Sintesi vocale (TTS)
+  description: Genera l'audio tramite un motore TTS di Home Assistant e lo riproduce su AWTRIX NG.
+  fields:
+    device_id:
+      name: Dispositivo AWTRIX
+      description: Seleziona il dispositivo da Home Assistant; in alternativa inserisci il prefisso MQTT.
+      selector:
+        device:
+          integration: awtrix_ng_control
+    device:
+      name: Prefisso MQTT (alternativo)
+      description: Per esempio tc002. Lascia vuoto se hai scelto il dispositivo.
+      example: tc002
+      selector:
+        text: {}
+    engine:
+      name: Motore TTS
+      required: true
+      selector:
+        entity:
+          domain: tts
+    message:
+      name: Messaggio
+      required: true
+      selector:
+        text:
+          multiline: true
+    language:
+      name: Lingua (opzionale)
+      selector:
+        text: {}
+    cache:
+      name: Usa cache TTS
+      default: true
+      selector:
+        boolean: {}
+    options:
+      name: Opzioni del motore TTS
+      selector:
+        object: {}
