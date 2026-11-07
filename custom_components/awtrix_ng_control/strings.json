@@ -1155,7 +1155,13 @@
         "name": "Last error"
       },
       "http_diagnostic": {
-        "name": "HTTP diagnostics"
+        "name": "HTTP diagnostics",
+        "state": {
+          "not_configured": "HTTP host not configured",
+          "unreachable": "HTTP unreachable",
+          "partial": "HTTP partial",
+          "connected": "HTTP connected"
+        }
       }
     },
     "binary_sensor": {

@@ -1155,7 +1155,13 @@
         "name": "Ultimo errore"
       },
       "http_diagnostic": {
-        "name": "Diagnostica HTTP"
+        "name": "Diagnostica HTTP",
+        "state": {
+          "not_configured": "Host HTTP non configurato",
+          "unreachable": "HTTP non raggiungibile",
+          "partial": "HTTP parziale",
+          "connected": "HTTP connesso"
+        }
       }
     },
     "binary_sensor": {

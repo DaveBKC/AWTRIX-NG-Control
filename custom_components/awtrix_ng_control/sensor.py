@@ -1,6 +1,6 @@
 """State entities derived from retained AWTRIX NG MQTT state topics."""
 import json
-from homeassistant.components.sensor import SensorEntity
+from homeassistant.components.sensor import SensorDeviceClass, SensorEntity
 from homeassistant.core import callback
 from .const import DOMAIN, CONF_NAME, CONF_PREFIX
 
@@ -48,6 +48,8 @@ class AwtrixSensor(SensorEntity):
 class AwtrixHttpDiagnostic(SensorEntity):
     _attr_has_entity_name = True
     _attr_translation_key = "http_diagnostic"
+    _attr_device_class = SensorDeviceClass.ENUM
+    _attr_options = ["not_configured", "unreachable", "partial", "connected"]
     _attr_icon = "mdi:lan-check"
 
     def __init__(self, entry, device):
@@ -63,12 +65,12 @@ class AwtrixHttpDiagnostic(SensorEntity):
     def native_value(self):
         http = self._device.get('http')
         if http is None:
-            return 'Host HTTP non configurato'
+            return 'not_configured'
         if not http.connected:
-            return 'HTTP non raggiungibile'
+            return 'unreachable'
         if not http.endpoint_ok.get('apps') or not http.endpoint_ok.get('stations'):
-            return 'HTTP parziale'
-        return 'HTTP connesso'
+            return 'partial'
+        return 'connected'
 
     @property
     def extra_state_attributes(self):
