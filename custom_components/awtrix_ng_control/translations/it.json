@@ -30,7 +30,8 @@
       "description": "Invia un payload JSON AWTRIX NG sul display.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "data": {
           "name": "Payload"
@@ -42,7 +43,8 @@
       "description": "Chiude la notifica attiva.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         }
       }
     },
@@ -51,7 +53,8 @@
       "description": "Rimuove la notifica indicata.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "name": {
           "name": "Nome"
@@ -63,7 +66,8 @@
       "description": "Applica le impostazioni del display.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "data": {
           "name": "Payload"
@@ -75,7 +79,8 @@
       "description": "Crea o aggiorna una app pushed.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "name": {
           "name": "Nome"
@@ -90,7 +95,8 @@
       "description": "Elimina una app pushed.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "name": {
           "name": "Nome"
@@ -102,7 +108,8 @@
       "description": "Mostra una app.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "name": {
           "name": "Nome"
@@ -114,7 +121,8 @@
       "description": "Invia il payload per il comando sound.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "data": {
           "name": "Payload"
@@ -126,7 +134,8 @@
       "description": "Invia il payload RTTTL.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "data": {
           "name": "Payload"
@@ -138,7 +147,8 @@
       "description": "Invia qualsiasi percorso di comando MQTT AWTRIX NG.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "command": {
           "name": "Comando"
@@ -333,7 +343,8 @@
           "name": "Dispositivo"
         },
         "order": {
-          "name": "Ordine applicazioni"
+          "name": "Ordine applicazioni",
+          "description": "Lista YAML dei nomi delle app attualmente in rotazione, senza ometterne nessuna."
         }
       }
     },
@@ -393,7 +404,8 @@
           "name": "Dispositivo"
         },
         "data": {
-          "name": "Payload"
+          "name": "Payload",
+          "description": "Oggetto JSON con text oppure layout, durata, suono, hold, stack, wakeup e nome."
         }
       }
     },
@@ -732,10 +744,12 @@
           "name": "Durata (ms)"
         },
         "show_immediately": {
-          "name": "Mostra subito"
+          "name": "Mostra subito",
+          "description": "Mostra subito l'app pubblicata, senza attivare la rotazione."
         },
         "enable_rotation": {
-          "name": "Abilita rotazione app"
+          "name": "Abilita rotazione app",
+          "description": "Attiva la rotazione automatica globale dopo aver creato l'app (non la disattiva se falso)."
         }
       }
     },
@@ -1022,6 +1036,35 @@
       "fields": {
         "device_id": {
           "name": "ID dispositivo"
+        }
+      }
+    },
+    "say": {
+      "name": "Sintesi vocale (TTS)",
+      "description": "Genera l'audio tramite un motore TTS di Home Assistant e lo riproduce su AWTRIX NG.",
+      "fields": {
+        "device_id": {
+          "name": "Dispositivo AWTRIX",
+          "description": "Seleziona il dispositivo da Home Assistant; in alternativa inserisci il prefisso MQTT."
+        },
+        "device": {
+          "name": "Prefisso MQTT (alternativo)",
+          "description": "Per esempio tc002. Lascia vuoto se hai scelto il dispositivo."
+        },
+        "engine": {
+          "name": "Motore TTS"
+        },
+        "message": {
+          "name": "Messaggio"
+        },
+        "language": {
+          "name": "Lingua (opzionale)"
+        },
+        "cache": {
+          "name": "Usa cache TTS"
+        },
+        "options": {
+          "name": "Opzioni del motore TTS"
         }
       }
     }
