@@ -19,7 +19,7 @@ class AwtrixSensor(SensorEntity):
     _attr_has_entity_name = True
     def __init__(self, entry, device, label, path):
         self._entry, self._device, self._path = entry, device, path
-        self._attr_name = label
+        self._attr_translation_key = {"apps/active": "active_app", "device": "device_info"}.get(path, path)
         self._attr_unique_id = f"{entry.entry_id}_{path.replace('/', '_')}"
         self._attr_device_info = {"identifiers": {(DOMAIN, entry.entry_id)}, "name": entry.data[CONF_NAME], "manufacturer": "Ulanzi / AWTRIX NG", "model": "AWTRIX NG"}
     @property
@@ -47,7 +47,7 @@ class AwtrixSensor(SensorEntity):
 
 class AwtrixHttpDiagnostic(SensorEntity):
     _attr_has_entity_name = True
-    _attr_name = "Diagnostica HTTP"
+    _attr_translation_key = "http_diagnostic"
     _attr_icon = "mdi:lan-check"
 
     def __init__(self, entry, device):
